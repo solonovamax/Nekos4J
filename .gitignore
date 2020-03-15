@@ -1,0 +1,7 @@
+# IntelliJ
+/.idea/
+/.gradle/
+/build/
+/out/
+*.iml
+# /src/main/java/pw/aru/api/nekos4j/

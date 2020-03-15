@@ -1,0 +1,52 @@
+plugins {
+    id "java"
+    id "maven"
+}
+
+group = "pw.aru.api"
+version = "1.0.0"
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "com.github.natanbc:reliqua:2.3.2" //HTTP
+    compile "org.json:json:20170516" //JSON parser
+    compile "org.slf4j:slf4j-api:1.7.25" //Logging
+    compile "com.google.code.findbugs:jsr305:3.0.2" //Code safety
+}
+
+jar {
+    baseName = project.name
+    manifest {
+        attributes "Implementation-Version": version
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = "javadoc"
+    from javadoc.destinationDir
+}
+
+javadoc {
+    failOnError = false
+    options.memberLevel = JavadocMemberLevel.PUBLIC
+    options.author()
+    options.encoding = "UTF-8"
+    options.addStringOption("-html5")
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
