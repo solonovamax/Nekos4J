@@ -15,8 +15,9 @@ repositories {
 }
 
 dependencies {
-    compile "com.github.natanbc:reliqua:2.3.2" //HTTP
+    implementation "com.google.guava:guava:28.1-jre" //Cache API
     compile "org.json:json:20170516" //JSON parser
+    compile "com.github.natanbc:reliqua:2.3.2" //HTTP
     compile "org.slf4j:slf4j-api:1.7.25" //Logging
     compile "com.google.code.findbugs:jsr305:3.0.2" //Code safety
 }
